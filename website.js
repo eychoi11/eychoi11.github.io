@@ -1,10 +1,11 @@
-'use strict'
+'use strict';
 
 (function() {
     window.addEventListener('load', init);
     let currentGuess = 1;
 
     function init() {
+        console.log('in init');
         document.getElementById('#submit').addEventListener('click', submitGuess());
     }
 
