@@ -11,22 +11,16 @@
         {color: 'green', hex: '#67a561', rgb: 'rgb(103, 165, 97)'},
     ];
 
-    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let viableLetters = new Set();
-    let nonViableLetters = new Set();
-    let letterMap = new Map();
-    let nonViableLetterMap = new Map();
+    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';    
     let guessMapArray = [];
 
     function init() {
-        console.log('in init');
         document.getElementById('submit').addEventListener('click', submitGuess);
         document.getElementById('next-guess').addEventListener('click', nextGuess);
         document.querySelectorAll('.tile').forEach(tile => {
             tile.addEventListener('click', changeColor);
         });
 
-        // preProcessGuesses();
         populateGuessMapArray(allowedGuesses);
     }
 
@@ -50,68 +44,26 @@
             }
         });
 
-        console.log('0')
-        for(const [key, value] of guessMapArray[0]) {
-            console.log(key, "->" ,value);
-        }
-        console.log('1')
-        for(const [key, value] of guessMapArray[1]) {
-            console.log(key, "->" ,value);
-        }
-        console.log('2')
-        for(const [key, value] of guessMapArray[2]) {
-            console.log(key, "->" ,value);
-        }
-        console.log('3')
-        for(const [key, value] of guessMapArray[3]) {
-            console.log(key, "->" ,value);
-        }
-        console.log('4')
-        for(const [key, value] of guessMapArray[4]) {
-            console.log(key, "->" ,value);
-        }
-    }
-
-    function preProcessGuesses() {
-        for (let i = 0; i < 5; i++) {
-            let map = new Map();
-            for (let j = 0; j < alphabet.length; j++) {
-                map.set(alphabet[j], undefined);
-            }
-            guessMapArray[i] = map;
-        }
-
-        allowedGuesses.forEach(word => {
-            for (let i = 0; i < 5; i++) {
-                let char = word.toUpperCase()[i];
-                let map = guessMapArray[i];
-                if (map.get(char) == undefined) {
-                    map.set(char, new Set());
-                }
-                map.get(char).add(word)
-            }
-        });
-        
-        console.log('0')
-        for(const [key, value] of guessMapArray[0]) {
-            console.log(key, "->" ,value);
-        }
-        console.log('1')
-        for(const [key, value] of guessMapArray[1]) {
-            console.log(key, "->" ,value);
-        }
-        console.log('2')
-        for(const [key, value] of guessMapArray[2]) {
-            console.log(key, "->" ,value);
-        }
-        console.log('3')
-        for(const [key, value] of guessMapArray[3]) {
-            console.log(key, "->" ,value);
-        }
-        console.log('4')
-        for(const [key, value] of guessMapArray[4]) {
-            console.log(key, "->" ,value);
-        }
+        // console.log('0')
+        // for(const [key, value] of guessMapArray[0]) {
+        //     console.log(key, "->" ,value);
+        // }
+        // console.log('1')
+        // for(const [key, value] of guessMapArray[1]) {
+        //     console.log(key, "->" ,value);
+        // }
+        // console.log('2')
+        // for(const [key, value] of guessMapArray[2]) {
+        //     console.log(key, "->" ,value);
+        // }
+        // console.log('3')
+        // for(const [key, value] of guessMapArray[3]) {
+        //     console.log(key, "->" ,value);
+        // }
+        // console.log('4')
+        // for(const [key, value] of guessMapArray[4]) {
+        //     console.log(key, "->" ,value);
+        // }
     }
 
     function changeColor(event) {
@@ -143,16 +95,11 @@
     }
 
     function submitGuess() {
-        console.log('in submitGuess');
         let userInputElement = document.getElementById('user-input');
         let word = userInputElement.value.trim();
-        console.log(String(word).toUpperCase())
-        console.log(word.length !== 5)
-        console.log(word.includes(' '))
         if (word.length !== 5 || word.includes(' ')) {
             error('Input must be a 5 letter word');
         } else {
-            console.log('in else');
             if (!allowedGuesses.includes(word)) {
                 error('Input is not a valid word')
             } else {
@@ -165,12 +112,9 @@
         userInputElement.value = '';
     }
 
-    function populateTiles(word) {
-        console.log('in populateTiles')
-        
+    function populateTiles(word) {        
         for (let i = 1; i < 6; i++) {
             let tile = document.querySelector('#guess-' + currentGuess + '  .letter-' + i);
-            console.log(tile)
             tile.innerText = word[i - 1];
         }
     }
@@ -188,9 +132,6 @@
     }
 
     function nextGuess() {
-        console.log('in nextGuess')
-  
-
         findBestNextGuess();
         currentGuess++;
         let section = document.getElementById('guess-' + currentGuess);
@@ -200,7 +141,6 @@
     }
 
     function findBestNextGuess() {
-        console.log('in findBestNextGuess')
         if (currentGuess == 1) {
             document.getElementById('suggested-guess-container').style.display = 'block';
         }
@@ -246,142 +186,128 @@
 
         let chars = [char1, char2, char3, char4, char5];
         let colors = [color1, color2, color3, color4, color5];
-        let possibleWords = new Set();
+        // let possibleWords = new Set();
         let greenWords = new Set();
         let yellowWords = new Set();
         let grayWords = new Set();
         let notPossibleWords = new Set();
-        let allPossibleWords = new Set(); 
+        let allPossibleWords = new Set();
+
+        let guessedLettersColor = new Map();
+        let guessedLettersPos = new Map();
+        let duplicateGreen = new Map();
+        let duplicateLetters = new Set();
+        for (let i = 0; i < chars.length; i++) {
+            let char = chars[i];
+            let color = colors[i]
+            if (guessedLettersColor.has(char)) {
+                let previousColor = guessedLettersColor.get(char);
+                if (color != previousColor) {
+                    duplicateLetters.add(char);
+                }
+            } else {
+                guessedLettersColor.set(char, color);
+            }
+            guessedLettersPos.set(char, i);
+        }
+
+        let possibleWords = new Map();
 
         for (let i = 0; i < chars.length; i++) {
             let char = chars[i];
-            console.log(guessMapArray[i])
+            let color = colors[i];
+            possibleWords.set(i, undefined);
 
-            if (colors[i] == 'green') {
-                console.log('green: ' + char)
-                console.log([...guessMapArray[i].get(char)])
+            if (color == 'green') {
                 if (guessMapArray[i].get(char) == undefined) {
                     continue;
                 }
-                greenWords = new Set([...greenWords, ...guessMapArray[i].get(char)]);
-                possibleWords = new Set([...possibleWords, ...guessMapArray[i].get(char)]);
-                // possibleWords.addAll(guessMapArray[i].get(char));
-                // letterMap[i] = char;
-                // viableLetters.add(char);
-            } else if (colors[i] == 'yellow') {
-                console.log('yellow: ' + char)
+                possibleWords.set(i, guessMapArray[i].get(char));
+            } else if (color == 'yellow') {
                 for (let j = 0; j < chars.length; j++) {
                     if (guessMapArray[j].get(char) == undefined) {
                         continue;
                     }
                     if (i != j) {
-                        console.log('if')
-                        console.log([...guessMapArray[j].get(char)])
-                        possibleWords = new Set([...possibleWords, ...guessMapArray[j].get(char)]);
-                        // possibleWords.addAll(guessMapArray[i].get(chars[j]));
-                    } else {
-                        console.log('else')
-                        console.log([...guessMapArray[j].get(char)])
+                        if (possibleWords.get(i) == undefined) {
+                            possibleWords.set(i, new Set());
+                        }
+                        possibleWords.set(i, new Set([...possibleWords.get(i), ...guessMapArray[j].get(char)]));
+                    } else if (!duplicateLetters.has(char)){
                         notPossibleWords = new Set([...notPossibleWords, ...guessMapArray[j].get(char)]);
-                        // notPossibleWords.addAll(guessMapArray[i].get(chars[j]));
                     }
                 }
-            } else if (colors[i] == 'gray') {
-                console.log('gray: ' + char)
-                for (let j = 0; j < chars.length; j++) {
-                    let otherChar = chars[j];
-                    if (guessMapArray[j].get(char) == undefined) {
-                        continue;
+            } else if (color == 'gray') {
+                if (!duplicateLetters.has(char)) {
+                    for (let j = 0; j < chars.length; j++) {
+                        let otherChar = chars[j];
+                        if (guessMapArray[j].get(char) == undefined) {
+                            continue;
+                        }
+                        if (otherChar == char && colors[j] !== color) {
+                            continue;
+                        }
+                        notPossibleWords = new Set([...notPossibleWords, ...guessMapArray[j].get(char)]);
                     }
-                    console.log([...guessMapArray[j].get(char)])
-                    if (otherChar == char && colors[j] !== colors[i]) {
-                        continue;
-                    }
-                    notPossibleWords = new Set([...notPossibleWords, ...guessMapArray[j].get(char)]);
-                    // notPossibleWords.addAll(guessMapArray[i].get(chars[j]));
                 }
-                // if (colors[i] == 'yellow') {
-                //     viableLetters.add(char);
-                // } else {
-                //     nonViableLetters.add(char);
-                // }
-                // nonViableLetterMap[i] = char;
             }
         }
 
-        console.log('possibleWords: ' + [...possibleWords])
-        console.log('notPossibleWords: ' + [...notPossibleWords])
-
-        possibleWords.forEach(word => {
+        let groupedPossibleWords = findPossibleWords(possibleWords)
+        groupedPossibleWords.forEach(word => {
             if (!notPossibleWords.has(word)) {
                 allPossibleWords.add(word); 
             }
         });
-
-
-        console.log('allPossibleWords: ' + [...allPossibleWords])
-
         populateGuessMapArray(allPossibleWords);
+        populateNextBestGuess(allPossibleWords);
+    }
 
-        // for (let i = 0; i < 5; i++) {
-        //     let map = new Map();
-        //     for (let j = 0; j < alphabet.length; j++) {
-        //         map.set(alphabet[j], undefined);
-        //     }
-        //     guessMapArray[i] = map;
-        // }
+    function populateNextBestGuess(possibleGuesses) {
+        let element = document.getElementById('suggested-guess');
+        let text = '';
+        possibleGuesses.forEach(word => {
+            if (text !== '') {
+                text += ', ';
+            }
+            text += word;
+        });
+        element.innerText = text;
+    }
 
-        // allPossibleWords.forEach(word => {
-        //     for (let i = 0; i < 5; i++) {
-        //         let char = word.toUpperCase()[i];
-        //         let map = guessMapArray[i];
-        //         if (map.get(char) == undefined) {
-        //             map.set(char, new Set());
-        //         }
-        //         map.get(char).add(word)
-        //     }
-        // });
+    function findPossibleWords(possibleWords) {
+        let smallestSetNum = undefined;
+        let count = undefined;
+        for (let i = 0; i < possibleWords.size; i++) {
+            if (possibleWords.get(i) !== undefined) {
+                let size = possibleWords.get(i).size;
+                if (count == undefined) {
+                    count = size;
+                    smallestSetNum = i;
+                } else if (size < count) {
+                    count = size;
+                    smallestSetNum = i;
+                }
+            }
+        }
 
-     
+        let smallestSet = [...possibleWords.get(smallestSetNum)];
+        let allPossibleWords = new Set([...smallestSet]);
 
-        
+        for (let i = 0; i < possibleWords.size; i++) {
+            if (i !== smallestSetNum) {
+                let set = possibleWords.get(i);
+                if (set !== undefined) {
+                    smallestSet.forEach(word => {
+                        if (!set.has(word)) {
+                            allPossibleWords.delete(word);
+                        }
+                    });
+                }
+            }
+        }
 
-        // if (possibleWords.size == 0) {
-        //     for (let i = 0; i < allowedGuesses.length; i++) {
-        //         let add = true;
-        //         let word = allowedGuesses[i].toUpperCase();
-        //         console.log(word)
-        //         for (let j = 0; j < word.length; j++) {
-        //             let char = word[j];
-        //             console.log(char)
-        //             console.log(nonViableLetters.has(char))
-        //             if (letterMap[j] !== undefined && letterMap[j] !== char) {
-        //                 add = false;
-        //                 break;
-        //             }
-        //             if (nonViableLetters.has(char)) {
-        //                 add = false;
-        //                 break;
-        //             }
-        //             console.log('3')
-        //         }
-        //         console.log('ADD: ' + add)
-        //         if (add) {
-        //             possibleWords.add(allowedGuesses[i])
-        //         }
-        //     }
-        // } else {
-        //     // after guess 1
-        // }
-        
-        // viableLetters.forEach(char => {
-
-        // })
-
-        // console.log(letterMap)
-        // console.log(viableLetters)
-        // console.log(nonViableLetters)
-        // console.log(possibleWords)
+        return allPossibleWords;
     }
 
     function error(message) {
