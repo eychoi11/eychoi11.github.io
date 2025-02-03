@@ -54,10 +54,10 @@ main {
 .hide {
     height: 0px;
     display: none;
+    padding: 0px 0px 0px 0px;
 }
 
 .hide section {
-    height: 0px;
     display: none;
 }
 
