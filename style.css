@@ -1,5 +1,6 @@
-.guess {
+.guess-parent {
     margin: auto;
+    width: 100vw;
 }
 
 .guess {
