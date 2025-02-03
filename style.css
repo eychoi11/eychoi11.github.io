@@ -1,3 +1,7 @@
+main {
+    padding: 10px 10px 10px 10px;
+}
+
 .guess-parent {
     margin: auto;
     width: 100vw;
@@ -6,7 +10,7 @@
 .guess {
     display: flex;
     flex-direction: row;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 0px 10px 0px;
     gap: 10px;
 }
 
