@@ -1,10 +1,26 @@
 main {
     padding: 10px 10px 10px 10px;
+    display: flex;
+}
+
+#instructions {
+    width: 30%;
+    font-size: 20px;
+    text-align: center;
+}
+
+#instructions li {
+    text-align: left;
+}
+
+#guess-container {
+    width: 70%;
 }
 
 #user-input-container {
     display: flex;
     justify-content: center;
+    gap: 5px;
 }
 
 #user-input {
@@ -13,20 +29,18 @@ main {
     font-size: 3vw;
 }
 
-#submit {
+#submit{
     width: 7vw;
 }
 
 #next-guess {
     height: 5vw;
     width: 100%;
-    /* width: 25vw; */
     font-size: 3vw;
 }
 
 .guess-parent {
     margin: auto;
-    width: 100vw;
 }
 
 .guess {
@@ -35,6 +49,12 @@ main {
     padding: 10px 0px 10px 0px;
     gap: 10px;
     justify-content: center;
+}
+
+.hide {
+    height: 0px;
+    opacity: 0;
+    display: none;
 }
 
 .tile {

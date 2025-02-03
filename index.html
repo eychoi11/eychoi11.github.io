@@ -2,132 +2,145 @@
 <html xml:lang>
     <head lang='en'>
         <meta charset='utf-8'>
-        <title>Elise Website</title>
+        <title>Elise's Website: Wordle Helper</title>
         <link rel='stylesheet' type='text/css' href='style.css'>
         <script type='text/javascript' src='script.js'></script>
     </head>
     <body>
         <header></header>
         <main>
-            <article id='user-input-container'>
-                <input id='user-input' type='text'>
-                <button id='submit'>Submit</button>
-            </article>
-            <article id='suggested-guess-container' style='display: none;'>
-                <h1>Next Suggested Guesses:</h1>
-                <div id='suggested-guess'></div>
-            </article>
-            <article class='guess-parent'>
-                <!-- guess 1 -->
-                <section id='guess-1' class='guess'>
-                    <section class='guess-group'>
-                        <div class='tile letter-1' style='background-color: #74787a;'></div>
+            <section id='instructions'>
+                <h1>Wordle Helper Instructions</h1>
+                <ul>
+                    <li>
+                        To enter the word guessed, type the word into the input box and click "Submit".
+                    </li>
+                    <li>To update whether the letter was gray, yellow, or green, click the box that contains the letter.</li>
+                    <li>When the "Submit Guess" button is visible, click the button to lock in the guess. The possible words will appear at the top of the screen.</li>
+                  </ul>
+            </section>
+            <section id='guess-container'>
+                <article id='user-input-container'>
+                    <input id='user-input' type='text'>
+                    <button id='submit'>Submit</button>
+                    <button id='show-hide-button'>Click to hide previous guesses</button>
+                </article>
+                <article id='suggested-guess-container' style='display: none;'>
+                    <h1>Next Suggested Guesses:</h1>
+                    <div id='suggested-guess'></div>
+                </article>
+                <article class='guess-parent'>
+                    <!-- guess 1 -->
+                    <section id='guess-1' class='guess'>
+                        <section class='guess-group'>
+                            <div class='tile letter-1' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-2' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-3' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-4' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-5' style='background-color: #74787a;'></div>
+                        </section>
                     </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-2' style='background-color: #74787a;'></div>
+                    <!-- guess 2 -->
+                    <section id='guess-2' class='guess' style='display: none;'>
+                        <section class='guess-group'>
+                            <div class='tile letter-1' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-2' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-3' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-4' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-5' style='background-color: #74787a;'></div>
+                        </section>
                     </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-3' style='background-color: #74787a;'></div>
+                    <!-- guess 3 -->
+                    <section id='guess-3' class='guess' style='display: none;'>
+                        <section class='guess-group'>
+                            <div class='tile letter-1' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-2' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-3' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-4' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-5' style='background-color: #74787a;'></div>
+                        </section>
                     </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-4' style='background-color: #74787a;'></div>
+                    <!-- guess 4 -->
+                    <section id='guess-4' class='guess' style='display: none;'>
+                        <section class='guess-group'>
+                            <div class='tile letter-1' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-2' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-3' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-4' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-5' style='background-color: #74787a;'></div>
+                        </section>
                     </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-5' style='background-color: #74787a;'></div>
+                    <!-- guess 5 -->
+                    <section id='guess-5' class='guess' style='display: none;'>
+                        <section class='guess-group'>
+                            <div class='tile letter-1' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-2' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-3' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-4' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-5' style='background-color: #74787a;'></div>
+                        </section>
                     </section>
-                </section>
-                <!-- guess 2 -->
-                <section id='guess-2' class='guess' style='display: none;'>
-                    <section class='guess-group'>
-                        <div class='tile letter-1' style='background-color: #74787a;'></div>
+                    <!-- guess 6 -->
+                    <section id='guess-6' class='guess' style='display: none;'>
+                        <section class='guess-group'>
+                            <div class='tile letter-1' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-2' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-3' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-4' style='background-color: #74787a;'></div>
+                        </section>
+                        <section class='guess-group'>
+                            <div class='tile letter-5' style='background-color: #74787a;'></div>
+                        </section>
                     </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-2' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-3' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-4' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-5' style='background-color: #74787a;'></div>
-                    </section>
-                </section>
-                <!-- guess 3 -->
-                <section id='guess-3' class='guess' style='display: none;'>
-                    <section class='guess-group'>
-                        <div class='tile letter-1' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-2' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-3' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-4' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-5' style='background-color: #74787a;'></div>
-                    </section>
-                </section>
-                <!-- guess 4 -->
-                <section id='guess-4' class='guess' style='display: none;'>
-                    <section class='guess-group'>
-                        <div class='tile letter-1' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-2' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-3' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-4' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-5' style='background-color: #74787a;'></div>
-                    </section>
-                </section>
-                <!-- guess 5 -->
-                <section id='guess-5' class='guess' style='display: none;'>
-                    <section class='guess-group'>
-                        <div class='tile letter-1' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-2' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-3' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-4' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-5' style='background-color: #74787a;'></div>
-                    </section>
-                </section>
-                <!-- guess 6 -->
-                <section id='guess-6' class='guess' style='display: none;'>
-                    <section class='guess-group'>
-                        <div class='tile letter-1' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-2' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-3' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-4' style='background-color: #74787a;'></div>
-                    </section>
-                    <section class='guess-group'>
-                        <div class='tile letter-5' style='background-color: #74787a;'></div>
-                    </section>
-                </section>
-            </article>
-            <button id='next-guess' hidden>Submit Guess</button>
+                </article>
+                <button id='next-guess' hidden>Submit Guess</button>
+            </section>
         </main>
         <footer>
 

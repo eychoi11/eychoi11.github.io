@@ -20,6 +20,7 @@
         document.querySelectorAll('.tile').forEach(tile => {
             tile.addEventListener('click', changeColor);
         });
+        document.getElementById('show-hide-button').addEventListener('click', compressPreviousGuess);
 
         populateGuessMapArray(allowedGuesses);
     }
@@ -146,6 +147,9 @@
             document.getElementById('suggested-guess-container').style.display = 'block';
         }
 
+        let parentDiv = document.querySelector('#guess-' + currentGuess);
+        parentDiv.classList.add('guessed');
+
         let div1 = document.querySelector('#guess-' + currentGuess + ' .letter-1');
         div1.removeEventListener('click', changeColor);
         let color1 = div1.style.backgroundColor;
@@ -187,16 +191,11 @@
 
         let chars = [char1, char2, char3, char4, char5];
         let colors = [color1, color2, color3, color4, color5];
-        // let possibleWords = new Set();
-        let greenWords = new Set();
-        let yellowWords = new Set();
-        let grayWords = new Set();
         let notPossibleWords = new Set();
         let allPossibleWords = new Set();
 
         let guessedLettersColor = new Map();
         let guessedLettersPos = new Map();
-        let duplicateGreen = new Map();
         let duplicateLetters = new Set();
         for (let i = 0; i < chars.length; i++) {
             let char = chars[i];
@@ -324,6 +323,54 @@
 
         return allPossibleWords;
     }
+
+    function compressPreviousGuess() {
+        let guesses = document.querySelectorAll('.guessed');
+        let showHideButton = document.getElementById('show-hide-button')
+        let text = showHideButton.innerText;
+        if (text.includes('hide')) {
+            showHideButton.innerText = 'Click to show previous guesses';
+            guesses.forEach(guess => {
+                guess.classList.add('hide');
+            });
+        } else {
+            showHideButton.innerText = 'Click to hide previous guesses';
+            guesses.forEach(guess => {
+                guess.classList.remove('hide');
+            });
+        }
+
+        
+
+        
+
+        // console.log('in compressPreviousGuess')
+        // let showHideButton = document.createElement('button');
+        // showHideButton.innerText = 'show';
+        // let section = document.querySelector('#guess-' + currentGuess);
+
+        // console.log(section)
+
+        // section.addEventListener('click', compressElement)
+    }
+
+    function compressElement(element) {
+        let clickedElement = element.currentTarget;
+
+        if (clickedElement.classList.contains('hide')) {
+            let elementId = clickedElement.id;
+            console.log(elementId)
+            let dropDown = document.querySelector('#' + elementId).nextElementSibling;
+            console.log(dropDown)
+            dropDown.remove();
+        } else {
+            let dropDown = document.createElement('div');
+            dropDown.innerText = 'Click to reveal.';
+            dropDown.classList.add('dropdown');
+            clickedElement.after(dropDown)
+        }
+        clickedElement.classList.toggle('hide');
+      }
 
     function error(message) {
         alert(message);
