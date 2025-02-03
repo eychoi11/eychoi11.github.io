@@ -97,6 +97,7 @@
     function submitGuess() {
         let userInputElement = document.getElementById('user-input');
         let word = userInputElement.value.trim();
+        word = String(word).toLowerCase();
         if (word.length !== 5 || word.includes(' ')) {
             error('Input must be a 5 letter word');
         } else {
