@@ -258,7 +258,9 @@
         if (groupedPossibleWords.size == 0) {
             guessMapArray.forEach(map => {
                 map.forEach(words => {
-                    groupedPossibleWords = new Set([...groupedPossibleWords, ...words]);
+                    if (words !== undefined) {
+                        groupedPossibleWords = new Set([...groupedPossibleWords, ...words]);
+                    }
                 });
             });
         }
