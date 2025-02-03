@@ -59,6 +59,6 @@ h1 {
 }
 #suggested-guess {
     font-size: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 10vh;
 }
