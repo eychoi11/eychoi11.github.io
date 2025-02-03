@@ -255,6 +255,14 @@
         }
 
         let groupedPossibleWords = findPossibleWords(possibleWords)
+        if (groupedPossibleWords.size == 0) {
+            guessMapArray.forEach(map => {
+                map.forEach(words => {
+                    groupedPossibleWords = new Set([...groupedPossibleWords, ...words]);
+                });
+            });
+        }
+
         groupedPossibleWords.forEach(word => {
             if (!notPossibleWords.has(word)) {
                 allPossibleWords.add(word); 
@@ -290,6 +298,10 @@
                     smallestSetNum = i;
                 }
             }
+        }
+
+        if (smallestSetNum == undefined) {
+            return new Set();
         }
 
         let smallestSet = [...possibleWords.get(smallestSetNum)];
