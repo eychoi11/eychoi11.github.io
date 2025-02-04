@@ -26,9 +26,9 @@ main {
 }
 
 #user-input {
-    height: 3vw;
+    height: 5vh;
     width: 15vw;
-    font-size: 3vw;
+    font-size: 4vh;
 }
 
 #submit{
@@ -36,13 +36,15 @@ main {
 }
 
 #next-guess {
-    height: 5vw;
+    height: 30px;
     width: 100%;
-    font-size: 3vw;
+    font-size: 30px;
 }
 
 .guess-parent {
     margin: auto;
+    overflow-y: auto;
+    height: 80vh
 }
 
 .guess {
@@ -80,6 +82,11 @@ main {
 }
 
 h1 {
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+h2 {
     font-size: 20px;
     font-weight: bold;
 }
