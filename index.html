@@ -3,8 +3,8 @@
     <head lang='en'>
         <meta charset='utf-8'>
         <title>Elise's Website: Wordle Helper</title>
-        <link rel='stylesheet' type='text/css' href='style.css'>
-        <script type='text/javascript' src='script.js'></script>
+        <link rel='stylesheet' type='text/css' href='wordle.css'>
+        <script type='text/javascript' src='wordle.js'></script>
     </head>
     <body>
         <header></header>
@@ -17,17 +17,17 @@
                     </li>
                     <li>To update whether the letter was gray, yellow, or green, click the box that contains the letter.</li>
                     <li>When the "Submit Guess" button is visible, click the button to lock in the guess. The possible words will appear at the top of the screen.</li>
-                  </ul>
+                </ul>
+                <article id='suggested-guess-container' style='display: none;'>
+                    <h1>Next Suggested Guesses:</h1>
+                    <div id='suggested-guess'></div>
+                </article>
             </section>
             <section id='guess-container'>
                 <article id='user-input-container'>
                     <input id='user-input' type='text'>
                     <button id='submit'>Submit</button>
                     <button id='show-hide-button'>Click to hide previous guesses</button>
-                </article>
-                <article id='suggested-guess-container' style='display: none;'>
-                    <h1>Next Suggested Guesses:</h1>
-                    <div id='suggested-guess'></div>
                 </article>
                 <article class='guess-parent'>
                     <!-- guess 1 -->

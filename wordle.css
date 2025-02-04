@@ -11,10 +11,12 @@ main {
 
 #instructions li {
     text-align: left;
+    padding: 0px 15px 0px 15px;
 }
 
 #guess-container {
     width: 70%;
+    padding: 0px 15px 0px 15px;
 }
 
 #user-input-container {
@@ -69,7 +71,7 @@ main {
     font-size: 100px;
     text-align: center;
     vertical-align: middle;
-    line-height: 10vw;  
+    line-height: 10vw;
 }
 
 .guess-group {
@@ -81,8 +83,12 @@ h1 {
     font-size: 20px;
     font-weight: bold;
 }
+
+#suggested-guess-container {
+    padding-top: 15px;
+}
+
 #suggested-guess {
-    font-size: 10px;
     overflow-y: auto;
-    height: 10vh;
+    height: 50vh;
 }
