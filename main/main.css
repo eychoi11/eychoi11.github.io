@@ -85,6 +85,10 @@ main article {
   flex-direction: column;
 }
 
+main {
+  padding-top: 200px;
+}
+
 #intro {
   font-size: 40pt;
 }
