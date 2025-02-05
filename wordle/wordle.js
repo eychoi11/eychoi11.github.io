@@ -12,7 +12,7 @@
         {color: 'green', hex: '#67a561', rgb: 'rgb(103, 165, 97)'},
     ];
 
-    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';    
+    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let guessMapArray = [];
 
     function init() {
@@ -24,6 +24,14 @@
         document.getElementById('show-hide-button').addEventListener('click', compressPreviousGuess);
 
         populateGuessMapArray(allowedGuesses);
+
+        // $.getscript("HeaderComponent.js",function(){
+        //     HeaderComponent();
+        //     });
+
+        // const container = document.querySelector('header');
+        // const root = ReactDOM.createRoot(container);
+        // root.render(HeaderComponent());
     }
 
     function populateGuessMapArray(wordSet) {
@@ -87,7 +95,7 @@
         } else {
             newKey = Number(currentKey) + 1;
         }
-        
+
         for (const [key, value] of Object.entries(colorHex)) {
             if (key == newKey) {
                 newColor = value['hex'];
@@ -115,7 +123,7 @@
         userInputElement.value = '';
     }
 
-    function populateTiles(word) {        
+    function populateTiles(word) {
         for (let i = 1; i < 6; i++) {
             let tile = document.querySelector('#guess-' + currentGuess + '  .letter-' + i);
             tile.innerText = word[i - 1];
@@ -270,7 +278,7 @@
 
         groupedPossibleWords.forEach(word => {
             if (!notPossibleWords.has(word)) {
-                allPossibleWords.add(word); 
+                allPossibleWords.add(word);
             }
         });
         populateGuessMapArray(allPossibleWords);
