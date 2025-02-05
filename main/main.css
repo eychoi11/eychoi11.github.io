@@ -1,0 +1,58 @@
+/* color palette
+#EEF0F2
+#C6C7C4
+#A2999E
+#846A6A
+#353B3C */
+
+body {
+  margin: 0px;
+  background-color: #A2999E;
+}
+
+#header-section {
+  height: 80px;
+  background-color: #353B3C;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  height: 30px;
+  width: 200px;
+  color: #353B3C;
+  background-color: #C6C7C4;
+  text-align: center;
+  line-height: 30px;
+}
+
+a {
+  color: #353B3C;
+  text-decoration: none;
+}
+
+#projects {
+  max-height: 30px;
+  transition: max-height 0.15s ease-out;
+  margin-right: 10px;
+}
+
+#projects #list {
+  position: relative;
+  width: 100%;
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
+  background: #C6C7C4;
+  margin: 0px 10px 15px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+#projects:hover #list {
+  max-height: 500px;
+  transition: max-height 0.25s ease-in;
+}
