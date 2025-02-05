@@ -16,17 +16,19 @@ body {
 
 #header-section {
   height: 80px;
+  width: 100%;
   background-color: #353B3C;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
+  position: fixed;
 }
 
 .nav-item {
   height: 30px;
-  width: 200px;
+  width: 150px;
   color: #353B3C;
   background-color: #C6C7C4;
   text-align: center;
@@ -49,13 +51,13 @@ a {
 }
 
 .load-bar:hover::after {
-  width: 200px;
+  width: 150px;
 }
 
 #projects {
   max-height: 30px;
   transition: max-height 0.15s ease-out;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 #projects #list {
@@ -92,10 +94,20 @@ main article {
   align-self: center;
   background-color: #C6C7C4;
   padding: 50px 20px 50px 20px;
+  color: #353B3C;
 }
 
 .container div {
   text-align: left;
   font-size: 16pt;
   padding: 10px 50px 10px 50px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 20pt;
+}
+
+#intro, #about-me, #skills, #contact-me {
+  scroll-margin-top: 100px;
 }
