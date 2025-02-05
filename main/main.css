@@ -34,6 +34,23 @@ a {
   text-decoration: none;
 }
 
+.load-bar::after {
+  display: block;
+  content: '';
+  width: 0;
+  /* width: 200px; */
+  height: 3px;
+  background: #EEF0F2;
+  position: relative;
+  transition: 0.5s;
+}
+
+.load-bar:hover::after {
+  width: 200px;
+}
+
+
+
 #projects {
   max-height: 30px;
   transition: max-height 0.15s ease-out;
@@ -47,7 +64,7 @@ a {
   transition: max-height 0.15s ease-out;
   overflow: hidden;
   background: #C6C7C4;
-  margin: 0px 10px 15px 0px;
+  /* margin: 0px 10px 15px 0px; */
   display: flex;
   flex-direction: column;
 }
