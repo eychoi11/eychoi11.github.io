@@ -115,3 +115,7 @@ h2 {
 #intro, #about-me, #skills, #contact-me {
   scroll-margin-top: 100px;
 }
+
+#contact-left  i {
+  padding-right: 15px;
+}
