@@ -1,0 +1,38 @@
+#portfolio {
+  display: flex;
+  flex-direction: row;
+}
+
+.art img {
+  margin-top: 10px;
+}
+
+.art img:hover {
+  transform: translateY(-10px);
+}
+
+#illustrations {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.image {
+  width: fit-content;
+  margin: auto;
+}
+
+.desc {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin: auto;
+  background-color: rgba(53, 59, 60, .5);
+  color: #EEF0F2;
+  top: -55px;
+}
+
+.art img:hover + .desc {
+  display: block;
+}
