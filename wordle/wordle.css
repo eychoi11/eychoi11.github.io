@@ -1,5 +1,6 @@
 main {
-    padding: 10px 10px 10px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     display: flex;
 }
 
@@ -21,6 +22,7 @@ main {
 
 #user-input-container {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 5px;
 }
@@ -43,8 +45,6 @@ main {
 
 .guess-parent {
     margin: auto;
-    overflow-y: auto;
-    height: 80vh
 }
 
 .guess {
