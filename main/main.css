@@ -14,6 +14,10 @@ body {
   background-color: #A2999E;
 }
 
+#header-section div:last-child, a:last-child {
+  margin-right: 20px;
+}
+
 #header-section {
   height: 80px;
   width: 100%;
@@ -57,7 +61,6 @@ a {
 #projects {
   max-height: 30px;
   transition: max-height 0.15s ease-out;
-  margin-right: 20px;
 }
 
 #projects #list {
