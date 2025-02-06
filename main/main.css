@@ -14,7 +14,7 @@ body {
   background-color: #A2999E;
 }
 
-#header-section div:last-child, a:last-child {
+#header-section div:last-child {
   margin-right: 20px;
 }
 
@@ -72,12 +72,14 @@ a {
   background: #C6C7C4;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 #projects:hover #list {
   max-height: 500px;
   transition: max-height 0.25s ease-in;
 }
+
 
 main article {
   width: 80%;
