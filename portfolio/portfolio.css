@@ -3,10 +3,6 @@
   flex-direction: row;
 }
 
-.art img {
-  margin-top: 10px;
-}
-
 .art img:hover {
   transform: translateY(-10px);
 }
@@ -15,6 +11,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 15px;
 }
 
 .image {
