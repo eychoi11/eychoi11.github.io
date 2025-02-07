@@ -34,6 +34,7 @@ img, .image {
   text-align: center;
   text-wrap: wrap;
   padding: 20px 10px 0 10px;
+  pointer-events: none;
 }
 
 .image:hover .desc {
