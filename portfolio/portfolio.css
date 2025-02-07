@@ -8,7 +8,7 @@
   transform: translateY(-10px);
 }
 
-#illustrations {
+#illustrations, #animations {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -33,7 +33,7 @@ img, .image {
   top: -175px;
   text-align: center;
   text-wrap: wrap;
-  padding-top: 20px;
+  padding: 20px 10px 0 10px;
 }
 
 .image:hover .desc {
