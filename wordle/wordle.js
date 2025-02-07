@@ -17,6 +17,11 @@
 
     function init() {
         document.getElementById('submit').addEventListener('click', submitGuess);
+        document.getElementById('user-input').addEventListener('keydown', (event)=>{
+            if (event.code === 'Enter') {
+                submitGuess();
+            }
+        });
         document.getElementById('next-guess').addEventListener('click', nextGuess);
         document.querySelectorAll('.tile').forEach(tile => {
             tile.addEventListener('click', changeColor);
@@ -24,15 +29,8 @@
         document.getElementById('show-hide-button').addEventListener('click', compressPreviousGuess);
 
         populateGuessMapArray(allowedGuesses);
-
-        // $.getscript("HeaderComponent.js",function(){
-        //     HeaderComponent();
-        //     });
-
-        // const container = document.querySelector('header');
-        // const root = ReactDOM.createRoot(container);
-        // root.render(HeaderComponent());
     }
+
 
     function populateGuessMapArray(wordSet) {
         for (let i = 0; i < 5; i++) {
@@ -53,27 +51,6 @@
                 map.get(char).add(word)
             }
         });
-
-        // console.log('0')
-        // for(const [key, value] of guessMapArray[0]) {
-        //     console.log(key, "->" ,value);
-        // }
-        // console.log('1')
-        // for(const [key, value] of guessMapArray[1]) {
-        //     console.log(key, "->" ,value);
-        // }
-        // console.log('2')
-        // for(const [key, value] of guessMapArray[2]) {
-        //     console.log(key, "->" ,value);
-        // }
-        // console.log('3')
-        // for(const [key, value] of guessMapArray[3]) {
-        //     console.log(key, "->" ,value);
-        // }
-        // console.log('4')
-        // for(const [key, value] of guessMapArray[4]) {
-        //     console.log(key, "->" ,value);
-        // }
     }
 
     function changeColor(event) {
