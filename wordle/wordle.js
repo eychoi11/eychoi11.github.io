@@ -56,13 +56,11 @@
     function changeColor(event) {
         let elementStyle = event.target.style;
         let currentRGB = elementStyle.backgroundColor;
-        let currentColor = ''
         let currentKey = -1;
         let newColor = '';
         let newKey = -1;
         for (const [key, value] of Object.entries(colorHex)) {
             if (value['rgb'] == currentRGB) {
-                currentColor = value['color'];
                 currentKey = key;
             }
         }
@@ -184,7 +182,7 @@
         let allPossibleWords = new Set();
 
         let guessedLettersColor = new Map();
-        let guessedLettersPos = new Map();
+        let correctGuessedLettersPos = new Map();
         let duplicateLetters = new Set();
         for (let i = 0; i < chars.length; i++) {
             let char = chars[i];
@@ -197,7 +195,9 @@
             } else {
                 guessedLettersColor.set(char, color);
             }
-            guessedLettersPos.set(char, i);
+            if (color == 'green') {
+                correctGuessedLettersPos.set(char, i);
+            }
         }
 
         let possibleWords = new Map();
@@ -230,6 +230,20 @@
                 if (!duplicateLetters.has(char)) {
                     for (let j = 0; j < chars.length; j++) {
                         let otherChar = chars[j];
+                        if (guessMapArray[j].get(char) == undefined) {
+                            continue;
+                        }
+                        if (otherChar == char && colors[j] !== color) {
+                            continue;
+                        }
+                        notPossibleWords = new Set([...notPossibleWords, ...guessMapArray[j].get(char)]);
+                    }
+                } else {
+                    for (let j = 0; j < chars.length; j++) {
+                        let otherChar = chars[j];
+                        if (correctGuessedLettersPos.get(char) == j) {
+                            continue;
+                        }
                         if (guessMapArray[j].get(char) == undefined) {
                             continue;
                         }
